@@ -1,11 +1,11 @@
-package com.project.UserServices;
+package com.project.pms.UserServices;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.UserDao.*;
+import com.project.pms.UserDao.*;
 import com.project.pms.user.*;
 
 @Service

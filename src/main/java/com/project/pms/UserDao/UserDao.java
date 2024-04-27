@@ -1,4 +1,4 @@
-package com.project.UserDao;
+package com.project.pms.UserDao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
