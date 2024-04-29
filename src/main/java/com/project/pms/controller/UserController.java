@@ -1,4 +1,5 @@
 package com.project.pms.controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
 
@@ -38,5 +39,11 @@ public User getUser(@PathVariable String userId)
 public User updateUser(@RequestBody User user)
 {
 	return this.userService.updateUser(user);
+}
+
+@DeleteMapping("/user/{userId}")
+public User deleteUser(@PathVariable String userId)
+{
+	return this.userService.deleteUser(Integer.parseInt(userId));
 }
 }
