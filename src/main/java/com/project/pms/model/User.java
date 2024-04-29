@@ -29,6 +29,7 @@ public User(int id, String name, String email, String phno, String password, Str
 	this.password = password;
 	this.username = username;
 }
+
 public int getId() {
 	return id;
 }
@@ -59,9 +60,8 @@ public String getPassword() {
 public void setPassword(String password) {
 	this.password = password;
 }
-
-public void getUsername(String username) {
-	this.username = username;
+public String getUsername() {
+	return username;
 }
 public void setUsername(String username) {
 	this.username = username;
