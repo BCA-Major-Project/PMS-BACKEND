@@ -1,8 +1,8 @@
-package com.project.pms.UserServices;
+package com.project.pms.services;
 
 import java.util.List;
 
-import com.project.pms.user.*;
+import com.project.pms.model.*;
 
 public interface UserService {
 

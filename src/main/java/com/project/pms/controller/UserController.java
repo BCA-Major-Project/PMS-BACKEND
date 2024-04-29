@@ -1,4 +1,4 @@
-package com.project.pms.UserController;
+package com.project.pms.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.pms.user.User;
-import com.project.pms.UserServices.*;
+import com.project.pms.model.User;
+import com.project.pms.services.*;
 @RestController
 @CrossOrigin
 public class UserController {

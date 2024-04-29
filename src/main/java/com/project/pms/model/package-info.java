@@ -1,1 +1,1 @@
-package com.project.pms.user;
+package com.project.pms.model;

@@ -1,4 +1,4 @@
-package com.project.pms.user;
+package com.project.pms.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,1 +1,1 @@
-package com.project.pms.UserDao;
+package com.project.pms.dao;

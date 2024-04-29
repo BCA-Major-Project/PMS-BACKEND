@@ -1,1 +1,1 @@
-package com.project.pms.UserController;
+package com.project.pms.controller;
