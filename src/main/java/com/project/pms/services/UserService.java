@@ -15,5 +15,7 @@ public interface UserService {
 	public User updateUser(User user);
 	
 	public User deleteUser(int userId);
+
+	public User login(String email);
 	
 }

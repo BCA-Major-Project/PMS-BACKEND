@@ -47,7 +47,10 @@ public class UserServiceImp implements UserService {
 		return user;
 	}
 	
-	
+	@Override
+	public User login(String email){
+		return userDao.findByEmail(email);
+	}
 
 	
 }
