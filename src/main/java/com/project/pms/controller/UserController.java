@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.pms.model.User;
 import com.project.pms.services.*;
 @RestController
 @CrossOrigin
-public class ApiController {
+@RequestMapping("/pms")
+public class UserController {
 	@Autowired	
 	private UserService userService;
 		
