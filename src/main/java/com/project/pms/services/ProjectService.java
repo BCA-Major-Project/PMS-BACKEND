@@ -1,0 +1,17 @@
+package com.project.pms.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.project.pms.model.Project;
+
+public interface ProjectService {
+    
+    public Project addProject(Project project);
+
+    public List<Project> getProjects();
+    
+    public Optional<Project> getProjects(int uid);
+
+    public Optional<Project> getProjects(int uid, String type);
+}
