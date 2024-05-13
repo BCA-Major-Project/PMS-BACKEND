@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.pms.dao.ProjectDao;
 import com.project.pms.model.Project;
+import com.project.pms.model.User;
 
 @Service
 public class ProjectServiceImp implements ProjectService{
@@ -18,7 +19,18 @@ public class ProjectServiceImp implements ProjectService{
     public Project addProject(Project project){
         return project_dao.save(project);
     }
-
+    
+    @Override
+	public Project deleteProject(int uid) {
+		Project project=project_dao.findByuid(uid).get();
+		project_dao.delete(project);
+		return project;
+	}
+    @Override
+	public Project updateProject(Project project) {
+		project_dao.save(project);
+		return project;
+	}
     @Override
 	public List<Project> getProjects() {
 		return project_dao.findAll();
