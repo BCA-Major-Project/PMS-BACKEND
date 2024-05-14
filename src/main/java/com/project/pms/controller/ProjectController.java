@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.project.pms.model.Project;
-import com.project.pms.model.User;
 import com.project.pms.services.ProjectService;
 
 

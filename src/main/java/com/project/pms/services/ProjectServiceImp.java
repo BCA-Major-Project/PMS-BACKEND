@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.project.pms.dao.ProjectDao;
 import com.project.pms.model.Project;
-import com.project.pms.model.User;
 
 @Service
 public class ProjectServiceImp implements ProjectService{
