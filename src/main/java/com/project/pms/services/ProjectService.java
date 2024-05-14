@@ -15,9 +15,9 @@ public interface ProjectService {
 
     public List<Project> getProjects();
     
-    public Optional<Project> getProjects(int uid);
+    // public Optional<Project> getProjects(int uid);
 
-    public Optional<Project> getProjects(int uid, String type);
+    // public Optional<Project> getProjects(int uid, String type);
     
     
 }

@@ -36,14 +36,14 @@ public class ProjectController {
     public List<Project> getProjects() {
         return this.project_service.getProjects();
     }
-    @GetMapping("/projects/{uid}")
-    public Optional<Project> getUserProjects(@PathVariable String uid) {
-        return this.project_service.getProjects(Integer.parseInt(uid));
-    }
-    @GetMapping("/projects/{uid}/{type}")
-    public Optional<Project> getUserProjects(@PathVariable String uid, @PathVariable String type) {
-        return this.project_service.getProjects(Integer.parseInt(uid),type);
-    }
+    // @GetMapping("/projects/{uid}")
+    // public Optional<Project> getUserProjects(@PathVariable String uid) {
+    //     return this.project_service.getProjects(Integer.parseInt(uid));
+    // }
+    // @GetMapping("/projects/{uid}/{type}")
+    // public Optional<Project> getUserProjects(@PathVariable String uid, @PathVariable String type) {
+    //     return this.project_service.getProjects(Integer.parseInt(uid),type);
+    // }
     
 	@PutMapping("/projects")
 	public Project updateProject(@RequestBody Project project) {

@@ -20,8 +20,8 @@ public class ProjectServiceImp implements ProjectService{
     }
     
     @Override
-	public Project deleteProject(int uid) {
-		Project project=project_dao.findByuid(uid).get();
+	public Project deleteProject(int id) {
+		Project project=project_dao.findById(id).get();
 		project_dao.delete(project);
 		return project;
 	}
@@ -34,13 +34,13 @@ public class ProjectServiceImp implements ProjectService{
 	public List<Project> getProjects() {
 		return project_dao.findAll();
 	}
-    @Override
-    public Optional<Project> getProjects(int uid) {
-		return project_dao.findByuid(uid);
-	}
-    @Override
-    public Optional<Project> getProjects(int uid, String type) {
-        Optional<Project> projects = getProjects(uid);
-        return projects;
-	}
+    // @Override
+    // public Optional<Project> getProjects(int uid) {
+	// 	return project_dao.findByuid(uid);
+	// }
+    // @Override
+    // public Optional<Project> getProjects(int uid, String type) {
+    //     Optional<Project> projects = getProjects(uid);
+    //     return projects;
+	// }
 }

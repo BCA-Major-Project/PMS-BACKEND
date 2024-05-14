@@ -11,6 +11,6 @@ import com.project.pms.model.Project;
 
 
 public interface ProjectDao extends JpaRepository<Project,Integer>{
-    @Query("SELECT * FROM project p WHERE p.uid = :searchValue ") // Repeat for each column
-    Optional<Project> findByuid(@Param("searchValue") int searchValue);
+    // @Query("SELECT * FROM project p WHERE p.uid = :searchValue ") // Repeat for each column
+    // Optional<Project> findByuid(@Param("searchValue") int searchValue);
 }

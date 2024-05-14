@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -15,8 +17,10 @@ import java.util.stream.Collectors;
 public class Project {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
-    private int uid;
+    private int pid;
+    @ManyToOne
+    @JoinColumn(name = "uid")
+    private User user;
     private String name;
     private String details;
     private LocalDate dueDate;
@@ -27,10 +31,10 @@ public class Project {
 
     Project(){}
 
-    public Project(int id, int uid, String name, String details, String dueDate, String category, List<Integer> assignedTo) {
+    public Project(int pid, User user, String name, String details, String dueDate, String category, List<Integer> assignedTo) {
         super();
-        this.id = id;
-        this.uid = uid;
+        this.pid = pid;
+        this.user = user;
         this.name = name;
         this.details = details;
         this.dueDate = convertToDate(dueDate);
@@ -40,19 +44,19 @@ public class Project {
     }
 
     public int getId() {
-        return id;
+        return pid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int pid) {
+        this.pid = pid;
     }
 
-    public int getUid() {
-        return uid;
+    public User getUser() {
+        return user;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getName() {
@@ -95,6 +99,8 @@ public class Project {
         this.assingnedTo = listToString(assingnedTo);
     }
 
+
+
     public LocalDate convertToDate(String dueDateStr){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format_pattern);
         return LocalDate.parse(dueDateStr, formatter);
@@ -111,7 +117,7 @@ public class Project {
     }
     @Override
     public String toString() {
-        return "Project [id=" + id + ", uid=" + uid + ", name=" + name + ", details=" + details + ", dueDate=" + dueDate + ", category=" + category + ", assignedTo=" + assingnedTo +" ]";
+        return "Project [id=" + pid + ", user=" + user + ", name=" + name + ", details=" + details + ", dueDate=" + dueDate + ", category=" + category + ", assignedTo=" + assingnedTo +" ]";
     }
 
 }

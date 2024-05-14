@@ -1,29 +1,47 @@
 package com.project.pms.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Entity
+@Table(name = "user_comment")
 public class Comment {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int cmnt_id;
-    private String comment;
-    private LocalDateTime insertionTime;
 
+    @Column(name = "comment", length=255, nullable = false)
+    private String comment;
+    
+    @Column(name = "insertion_time")
+    private LocalDateTime insertionTime;
+    
+    @ManyToOne
+    @JoinColumn(name = "pid")
+    private Project pid;
+    
+    @ManyToOne
+    @JoinColumn(name = "uid")
+    private User user;
+    
     public static final String formatPattern = "yyyy-MM-dd HH:mm";
 
     // Default constructor for JPA
     public Comment() {}
 
-    public Comment(int cmnt_id, String comment, String insertionTime) {
+    public Comment(int cmnt_id, String comment, User user, String insertionTime) {
         this.cmnt_id = cmnt_id;
         this.comment = comment;
+        this.user = user;
         this.insertionTime = convertToDate(insertionTime);
     }
 
@@ -41,6 +59,13 @@ public class Comment {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getInsertionTime() {
