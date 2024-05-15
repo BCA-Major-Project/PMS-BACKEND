@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.project.pms.model.Project;
+import com.project.pms.model.User;
 import com.project.pms.services.ProjectService;
+import com.project.pms.services.UserService;
 
 
 
@@ -26,6 +28,8 @@ import com.project.pms.services.ProjectService;
 public class ProjectController {
     @Autowired
     ProjectService project_service;
+    @Autowired
+    UserService obj;
     
     @PostMapping("/project")
     public Project addProject(@RequestBody Project project) {
@@ -36,14 +40,17 @@ public class ProjectController {
     public List<Project> getProjects() {
         return this.project_service.getProjects();
     }
-    // @GetMapping("/projects/{uid}")
-    // public Optional<Project> getUserProjects(@PathVariable String uid) {
-    //     return this.project_service.getProjects(Integer.parseInt(uid));
-    // }
-    // @GetMapping("/projects/{uid}/{type}")
-    // public Optional<Project> getUserProjects(@PathVariable String uid, @PathVariable String type) {
-    //     return this.project_service.getProjects(Integer.parseInt(uid),type);
-    // }
+    @GetMapping("/projects/{id}")
+    public List<Project> getUserProjects(@PathVariable String id) {
+        User user = obj.getUser(Integer.parseInt(id));
+        // user.setId(Integer.parseInt(id));
+
+        return this.project_service.getProjects(user);
+    }
+    @GetMapping("/projects_by_category/{category}")
+    public List<Project> getUserProjectsByCategory(@PathVariable String category) {
+        return this.project_service.getProjects(category);
+    }
     
 	@PutMapping("/projects")
 	public Project updateProject(@RequestBody Project project) {

@@ -1,9 +1,9 @@
 package com.project.pms.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.project.pms.model.Project;
+import com.project.pms.model.User;
 
 public interface ProjectService {
     
@@ -15,9 +15,7 @@ public interface ProjectService {
 
     public List<Project> getProjects();
     
-    // public Optional<Project> getProjects(int uid);
-
-    // public Optional<Project> getProjects(int uid, String type);
+    public List<Project> getProjects(User user);
     
-    
+    public List<Project> getProjects(String category);
 }

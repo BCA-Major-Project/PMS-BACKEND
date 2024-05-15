@@ -1,13 +1,14 @@
 package com.project.pms.services;
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.pms.dao.ProjectDao;
 import com.project.pms.model.Project;
+import com.project.pms.model.User;
 
 @Service
 public class ProjectServiceImp implements ProjectService{
@@ -34,13 +35,12 @@ public class ProjectServiceImp implements ProjectService{
 	public List<Project> getProjects() {
 		return project_dao.findAll();
 	}
-    // @Override
-    // public Optional<Project> getProjects(int uid) {
-	// 	return project_dao.findByuid(uid);
-	// }
-    // @Override
-    // public Optional<Project> getProjects(int uid, String type) {
-    //     Optional<Project> projects = getProjects(uid);
-    //     return projects;
-	// }
+    @Override
+    public List<Project> getProjects(User user) {
+		return project_dao.findByUser(user);
+	}
+    @Override
+    public List<Project> getProjects(String category) {
+		return project_dao.findByCategory(category);
+	}
 }
