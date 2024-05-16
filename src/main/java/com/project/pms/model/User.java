@@ -11,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -36,11 +37,15 @@ public class User {
 	@JsonIgnore
     private List<Project> projects = new ArrayList<>();
 
+	@ManyToMany(mappedBy = "assignedTo")
+    private List<Project> assignedProjects;
+
+
 
 	public User() {
 		
 	}
-	public User(int uid, String name, String email, String phno, String password, String username, byte isOnline, List<Comment> comments, List<Project> projects) {
+	public User(int uid, String name, String email, String phno, String password, String username, byte isOnline, List<Comment> comments, List<Project> projects, List<Project> assignedProjects) {
 		super();
 		this.uid = uid;
 		this.name = name;
@@ -51,6 +56,7 @@ public class User {
 		this.isOnline = isOnline;
 		this.comments = comments;
 		this.projects = projects;
+		this.assignedProjects = assignedProjects;
 	}
 
 	public int getId() {
@@ -110,6 +116,13 @@ public class User {
 
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
+	}
+	public List<Project> getAssignedProjects() {
+		return assignedProjects;
+	}
+
+	public void setAssignedProjects(List<Project> assignedProjects) {
+		this.assignedProjects = assignedProjects;
 	}
 
 	@Override

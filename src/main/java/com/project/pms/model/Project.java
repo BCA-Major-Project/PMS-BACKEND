@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDate;
@@ -18,20 +20,32 @@ public class Project {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int pid;
+
     @ManyToOne
     @JoinColumn(name = "uid")
     private User user;
+
     private String name;
+
     private String details;
+
     private LocalDate dueDate;
+
     private String category;
-    private String assingnedTo;
+
+    @ManyToMany
+    @JoinTable(
+        name = "user",
+        joinColumns = @JoinColumn(name = "pid"),
+        inverseJoinColumns = @JoinColumn(name = "uid")
+    )
+    private List<User> assignedTo;
 
     public static String format_pattern = "yyyy-MM-dd";
 
     Project(){}
 
-    public Project(int pid, User user, String name, String details, String dueDate, String category, List<Integer> assignedTo) {
+    public Project(int pid, User user, String name, String details, String dueDate, String category, List<User> assignedTo) {
         super();
         this.pid = pid;
         this.user = user;
@@ -39,7 +53,7 @@ public class Project {
         this.details = details;
         this.dueDate = convertToDate(dueDate);
         this.category = category;
-        this.assingnedTo = listToString(assignedTo);
+        this.assignedTo = assignedTo;
 
     }
 
@@ -91,15 +105,15 @@ public class Project {
         this.category = category;
     }
 
-    public List<Integer> getAssingnedTo() {
-        return stringToList(assingnedTo);
+
+    // Getters and setters for assignedUsers
+    public List<User> getAssignedTo() {
+        return assignedTo;
     }
 
-    public void setAssingnedTo(List<Integer> assingnedTo) {
-        this.assingnedTo = listToString(assingnedTo);
+    public void setAssignedUsers(List<User> assignedTo) {
+        this.assignedTo = assignedTo;
     }
-
-
 
     public LocalDate convertToDate(String dueDateStr){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format_pattern);
@@ -117,7 +131,7 @@ public class Project {
     }
     @Override
     public String toString() {
-        return "Project [id=" + pid + ", user=" + user + ", name=" + name + ", details=" + details + ", dueDate=" + dueDate + ", category=" + category + ", assignedTo=" + assingnedTo +" ]";
+        return "Project [id=" + pid + ", user=" + user + ", name=" + name + ", details=" + details + ", dueDate=" + dueDate + ", category=" + category + ", assignedTo=" + assignedTo +" ]";
     }
 
 }
