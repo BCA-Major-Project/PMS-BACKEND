@@ -33,19 +33,19 @@ public class Project {
 
     private String category;
 
-    @ManyToMany
-    @JoinTable(
-        name = "user",
-        joinColumns = @JoinColumn(name = "pid"),
-        inverseJoinColumns = @JoinColumn(name = "uid")
-    )
-    private List<User> assignedTo;
+    // @ManyToMany
+    // @JoinTable(
+    //     name = "user",
+    //     joinColumns = @JoinColumn(name = "pid"),
+    //     inverseJoinColumns = @JoinColumn(name = "uid")
+    // )
+    private String assignedTo;
 
     public static String format_pattern = "yyyy-MM-dd";
 
     Project(){}
 
-    public Project(int pid, User user, String name, String details, String dueDate, String category, List<User> assignedTo) {
+    public Project(int pid, User user, String name, String details, String dueDate, String category, String assignedTo) {
         super();
         this.pid = pid;
         this.user = user;
@@ -107,11 +107,11 @@ public class Project {
 
 
     // Getters and setters for assignedUsers
-    public List<User> getAssignedTo() {
+    public String getAssignedTo() {
         return assignedTo;
     }
 
-    public void setAssignedUsers(List<User> assignedTo) {
+    public void setAssignedUsers(String assignedTo) {
         this.assignedTo = assignedTo;
     }
 
