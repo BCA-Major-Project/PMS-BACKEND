@@ -37,15 +37,15 @@ public class User {
 	@JsonIgnore
     private List<Project> projects = new ArrayList<>();
 
-	@ManyToMany(mappedBy = "assignedTo")
-    private List<Project> assignedProjects;
+	// @ManyToMany(mappedBy = "assignedTo")
+    // private List<Project> assignedProjects;
 
 
 
 	public User() {
 		
 	}
-	public User(int uid, String name, String email, String phno, String password, String username, byte isOnline, List<Comment> comments, List<Project> projects, List<Project> assignedProjects) {
+	public User(int uid, String name, String email, String phno, String password, String username, byte isOnline, List<Comment> comments, List<Project> projects){
 		super();
 		this.uid = uid;
 		this.name = name;
@@ -56,7 +56,7 @@ public class User {
 		this.isOnline = isOnline;
 		this.comments = comments;
 		this.projects = projects;
-		this.assignedProjects = assignedProjects;
+		// this.assignedProjects = assignedProjects;
 	}
 
 	public int getId() {
@@ -117,13 +117,13 @@ public class User {
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
 	}
-	public List<Project> getAssignedProjects() {
-		return assignedProjects;
-	}
+	// public List<Project> getAssignedProjects() {
+	// 	return assignedProjects;
+	// }
 
-	public void setAssignedProjects(List<Project> assignedProjects) {
-		this.assignedProjects = assignedProjects;
-	}
+	// public void setAssignedProjects(List<Project> assignedProjects) {
+	// 	this.assignedProjects = assignedProjects;
+	// }
 
 	@Override
 	public String toString() {
