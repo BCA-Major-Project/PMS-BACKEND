@@ -1,5 +1,6 @@
 package com.project.pms.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,12 +9,18 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.hibernate.annotations.Comments;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Project {
@@ -33,6 +40,11 @@ public class Project {
 
     private String category;
 
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+	@JsonIgnore
+    private List<Comment> comment = new ArrayList<>();
+
+   
     // @ManyToMany
     // @JoinTable(
     //     name = "user",
@@ -45,7 +57,7 @@ public class Project {
 
     Project(){}
 
-    public Project(int pid, User user, String name, String details, String dueDate, String category, String assignedTo) {
+    public Project(int pid, User user, String name, String details, String dueDate, String category, String assignedTo, List<Comment> comment) {
         super();
         this.pid = pid;
         this.user = user;
@@ -54,7 +66,16 @@ public class Project {
         this.dueDate = convertToDate(dueDate);
         this.category = category;
         this.assignedTo = assignedTo;
+        this.comment = comment;
 
+    }
+
+    public List<Comment> getComment() {
+        return comment;
+    }
+
+    public void setComment(List<Comment> comment) {
+        this.comment = comment;
     }
 
     public int getId() {

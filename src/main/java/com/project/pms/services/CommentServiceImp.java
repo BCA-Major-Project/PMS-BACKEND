@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.pms.dao.CommentDao;
 import com.project.pms.model.Comment;
+import com.project.pms.model.Project;
 
 @Service
 public class CommentServiceImp implements CommentService {
@@ -30,8 +31,9 @@ public class CommentServiceImp implements CommentService {
     }
 
     @Override
-    public List<Comment> getComments(int cmnt_id) {
-        throw new UnsupportedOperationException("Unimplemented method 'getComments'");
+    public List<Comment> getComments(Project project) {
+        return commentDao.findByProject(project);
+        // throw new UnsupportedOperationException("Unimplemented method 'getComments'");
     }
 
     @Override

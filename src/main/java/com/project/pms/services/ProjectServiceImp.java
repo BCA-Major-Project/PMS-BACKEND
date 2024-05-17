@@ -31,6 +31,10 @@ public class ProjectServiceImp implements ProjectService{
 		project_dao.save(project);
 		return project;
 	}
+	@Override
+	public Project getProject(int pid){
+		return project_dao.findById(pid).get();
+	}
     @Override
 	public List<Project> getProjects() {
 		return project_dao.findAll();

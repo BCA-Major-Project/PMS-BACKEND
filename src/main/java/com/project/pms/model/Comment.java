@@ -27,8 +27,16 @@ public class Comment {
     
     @ManyToOne
     @JoinColumn(name = "pid")
-    private Project pid;
+    private Project project;
     
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
     @ManyToOne
     @JoinColumn(name = "uid")
     private User user;
@@ -38,10 +46,11 @@ public class Comment {
     // Default constructor for JPA
     public Comment() {}
 
-    public Comment(int cmnt_id, String comment, User user, String insertionTime) {
+    public Comment(int cmnt_id, String comment, User user, String insertionTime, Project project) {
         this.cmnt_id = cmnt_id;
         this.comment = comment;
         this.user = user;
+        this.project = project;
         this.insertionTime = convertToDate(insertionTime);
     }
 
