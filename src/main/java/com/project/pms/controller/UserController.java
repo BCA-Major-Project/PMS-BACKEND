@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.pms.dto.UserDTO;
+import com.project.pms.dto.OnlineStatusDTO;
 import com.project.pms.model.User;
 import com.project.pms.services.*;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @CrossOrigin
@@ -77,13 +77,14 @@ public class UserController {
 	}
 
 	@PatchMapping("/set_user_online/{id}")
-    public ResponseEntity<?> updateOnlineStatus(@PathVariable int id, @RequestBody byte isOnline) {
-        User user = userService.getUser(id); // Assuming you have a service to fetch users
-        if (user == null) {
-            return ResponseEntity.notFound().build();
-        }
-        user.setIsOnline(isOnline);
-        userService.saveUser(user); // Assuming you have a method to save user updates
-        return ResponseEntity.ok().build();
-    }
+	public ResponseEntity<?> updateOnlineStatus(@PathVariable int id, @RequestBody OnlineStatusDTO onlineStatus) {
+		User user = userService.getUser(id); // Assuming you have a service to fetch users
+		if (user == null) {
+			return ResponseEntity.notFound().build();
+		}
+		System.out.println(onlineStatus.getIsOnline());
+		user.setIsOnline(onlineStatus.getIsOnline());
+		userService.saveUser(user); // Assuming you have a method to save user updates
+		return ResponseEntity.ok().build();
+	}
 }
