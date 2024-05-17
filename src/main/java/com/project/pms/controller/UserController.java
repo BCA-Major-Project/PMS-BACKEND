@@ -52,6 +52,7 @@ public class UserController {
 			UserDTO userDTO = new UserDTO();
 			userDTO.setId(user.getId());
 			userDTO.setUsername(user.getUsername());
+			userDTO.setIsOnline(user.getIsOnline());
 			if (userDTOs == null) {
                 userDTOs = new ArrayList<>();
             }
