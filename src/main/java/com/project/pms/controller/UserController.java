@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,10 +60,6 @@ public class UserController {
 		return userDTOs;
 	}
 
-	public String getMethodName(@RequestParam String param) {
-		return param;
-	}
-
 	@GetMapping("/users/{userId}")
 	public User getUser(@PathVariable String userId) {
 		return this.userService.getUser(Integer.parseInt(userId));
@@ -76,4 +74,15 @@ public class UserController {
 	public User deleteUser(@PathVariable String userId) {
 		return this.userService.deleteUser(Integer.parseInt(userId));
 	}
+
+	@PatchMapping("/set_user_online/{id}")
+    public ResponseEntity<?> updateOnlineStatus(@PathVariable int id, @RequestBody byte isOnline) {
+        User user = userService.getUser(id); // Assuming you have a service to fetch users
+        if (user == null) {
+            return ResponseEntity.notFound().build();
+        }
+        user.setIsOnline(isOnline);
+        userService.saveUser(user); // Assuming you have a method to save user updates
+        return ResponseEntity.ok().build();
+    }
 }

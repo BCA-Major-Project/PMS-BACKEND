@@ -18,4 +18,7 @@ public interface UserService {
 
 	public User login(String email);
 	
+	public User saveUser(User user);
+
+	
 }

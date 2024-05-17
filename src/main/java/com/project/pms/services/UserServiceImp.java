@@ -52,5 +52,10 @@ public class UserServiceImp implements UserService {
 		return userDao.findByEmail(email);
 	}
 
+	@Override
+	public User saveUser(User user) {
+		return userDao.save(user);
+	}
+
 	
 }
