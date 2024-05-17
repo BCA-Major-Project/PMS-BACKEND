@@ -13,7 +13,7 @@ public interface CommentService {
     public List<Comment> getComments();
 
     
-     public List<Comment> getComments(Project project);
+    public List<Comment> getComments(Project project);
 
     public List<Comment> getComments(int cmnt_id, String type);
     

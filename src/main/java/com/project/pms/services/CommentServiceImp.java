@@ -33,7 +33,6 @@ public class CommentServiceImp implements CommentService {
     @Override
     public List<Comment> getComments(Project project) {
         return commentDao.findByProject(project);
-        // throw new UnsupportedOperationException("Unimplemented method 'getComments'");
     }
 
     @Override
@@ -41,5 +40,5 @@ public class CommentServiceImp implements CommentService {
         throw new UnsupportedOperationException("Unimplemented method 'getComments'");
     }
 
-   
+
 }

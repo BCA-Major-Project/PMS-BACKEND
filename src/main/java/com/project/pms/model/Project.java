@@ -18,8 +18,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.hibernate.annotations.Comments;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -44,20 +42,16 @@ public class Project {
 	@JsonIgnore
     private List<Comment> comment = new ArrayList<>();
 
-   
-    // @ManyToMany
-    // @JoinTable(
-    //     name = "user",
-    //     joinColumns = @JoinColumn(name = "pid"),
-    //     inverseJoinColumns = @JoinColumn(name = "uid")
-    // )
-    private String assignedTo;
+    @JsonIgnore
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    private List<AssignedProjects> assignedTo = new ArrayList<>();
 
     public static String format_pattern = "yyyy-MM-dd";
 
     Project(){}
 
-    public Project(int pid, User user, String name, String details, String dueDate, String category, String assignedTo, List<Comment> comment) {
+    public Project(int pid, User user, String name, String details, String dueDate, String category, List<AssignedProjects> assignedTo, List<Comment> comment) {
+
         super();
         this.pid = pid;
         this.user = user;
@@ -128,11 +122,11 @@ public class Project {
 
 
     // Getters and setters for assignedUsers
-    public String getAssignedTo() {
+    public  List<AssignedProjects> getAssignedTo() {
         return assignedTo;
     }
 
-    public void setAssignedUsers(String assignedTo) {
+    public void setAssignedUsers(List<AssignedProjects> assignedTo) {
         this.assignedTo = assignedTo;
     }
 

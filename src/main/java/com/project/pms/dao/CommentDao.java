@@ -5,7 +5,9 @@ import java.util.List;
 // import org.hibernate.mapping.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.project.pms.model.*;
+import com.project.pms.model.Project;
+import com.project.pms.model.Comment;
+
 
 public interface CommentDao extends JpaRepository <Comment,Integer>{
     Comment findById(int cmnt_id);
