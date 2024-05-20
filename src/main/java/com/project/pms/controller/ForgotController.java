@@ -80,12 +80,10 @@ public class ForgotController {
     @PostMapping("/forgotpwd")
     public ResponseEntity<String> sendOTP(@RequestBody ForgotPasswordDTO forgotPasswordDTO) {
         String email = forgotPasswordDTO.getEmail();
+        int otp = Integer.parseInt(forgotPasswordDTO.getOtp());
     
         System.out.println("Received email: " + email);
 
-        // Generate OTP of 6 digits
-        Random random = new Random();
-        int otp = 100000 + random.nextInt(900000); // Generate a random 6-digit OTP
         System.out.println("Generated OTP: " + otp);
 
         // Send OTP via email
