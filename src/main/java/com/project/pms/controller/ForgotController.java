@@ -61,10 +61,12 @@ import com.project.pms.services.EmailService;
 // import com.project.pms.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.project.pms.dto.ForgotPasswordDTO;
 
 import java.util.Random;
 
@@ -74,9 +76,11 @@ public class ForgotController {
 
     @Autowired
     private EmailService emailService;
-
-    @PostMapping("/forgotpwd/{email}")
-    public ResponseEntity<String> sendOTP(@PathVariable String email) {
+    
+    @PostMapping("/forgotpwd")
+    public ResponseEntity<String> sendOTP(@RequestBody ForgotPasswordDTO forgotPasswordDTO) {
+        String email = forgotPasswordDTO.getEmail();
+    
         System.out.println("Received email: " + email);
 
         // Generate OTP of 6 digits

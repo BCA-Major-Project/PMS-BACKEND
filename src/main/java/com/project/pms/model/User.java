@@ -20,9 +20,11 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int uid;
 	private String name;
+	@Column(unique = true)
 	private String email;
 	private String phno;
 	private String password;
+	@Column(unique = true)
 	private String username;
 	
 	@JsonIgnore
