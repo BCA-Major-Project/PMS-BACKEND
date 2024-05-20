@@ -80,7 +80,7 @@ public class ForgotController {
     @PostMapping("/forgotpwd")
     public ResponseEntity<String> sendOTP(@RequestBody ForgotPasswordDTO forgotPasswordDTO) {
         String email = forgotPasswordDTO.getEmail();
-        int otp = Integer.parseInt(forgotPasswordDTO.getOtp());
+        int otp = forgotPasswordDTO.getOtp();
     
         System.out.println("Received email: " + email);
 

@@ -3,9 +3,9 @@ package com.project.pms.dto;
 public class ForgotPasswordDTO {
 
     private String email;
-    private String otp;
+    private int otp;
     
-    public ForgotPasswordDTO(String email, String otp) {
+    public ForgotPasswordDTO(String email, int otp) {
         this.email = email;
         this.otp = otp;
     }
@@ -15,10 +15,10 @@ public class ForgotPasswordDTO {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getOtp() {
+    public int getOtp() {
         return otp;
     }
-    public void setOtp(String otp) {
+    public void setOtp(int otp) {
         this.otp = otp;
     }
     
