@@ -41,13 +41,12 @@ public class Comment {
     @JoinColumn(name = "uid")
     private User user;
     
-    public static final String formatPattern = "yyyy-MM-dd HH:mm";
+    public static final String formatPattern = "yyyy-MM-dd HH:mm:ss";
 
     // Default constructor for JPA
     public Comment() {}
 
-    public Comment(int cmnt_id, String comment, User user, String insertionTime, Project project) {
-        this.cmnt_id = cmnt_id;
+    public Comment(String comment, User user, String insertionTime, Project project) {
         this.comment = comment;
         this.user = user;
         this.project = project;
