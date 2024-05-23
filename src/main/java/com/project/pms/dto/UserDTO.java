@@ -4,7 +4,21 @@ public class UserDTO {
     private String username;
     private int uid;
     private byte isOnline;
+    private byte[] image;
+    private String name;
 
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public byte[] getImage() {
+        return image;
+    }
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
     public String getUsername() {
         return username;
     }
@@ -25,9 +39,11 @@ public class UserDTO {
     }
     public UserDTO() {
     }
-    public UserDTO(String username, int uid, byte isOnline) {
+    public UserDTO(String username, int uid, byte isOnline, byte[] image, String name) {
         this.username = username;
         this.uid = uid;
         this.isOnline = isOnline;
+        this.image = image;
+        this.name = name;
     }
 }

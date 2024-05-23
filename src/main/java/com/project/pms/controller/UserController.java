@@ -50,9 +50,11 @@ public class UserController {
 		List<UserDTO> userDTOs = new ArrayList<>();
 		for (User user : users) {
 			UserDTO userDTO = new UserDTO();
-			userDTO.setId(user.getId());
+			userDTO.setId(user.getUid());
 			userDTO.setUsername(user.getUsername());
 			userDTO.setIsOnline(user.getIsOnline());
+			userDTO.setName(user.getName());
+			userDTO.setImage(user.getImage());
 			if (userDTOs == null) {
                 userDTOs = new ArrayList<>();
             }
