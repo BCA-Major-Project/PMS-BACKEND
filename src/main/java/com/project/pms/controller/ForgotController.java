@@ -61,6 +61,7 @@ import com.project.pms.services.EmailService;
 // import com.project.pms.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,6 +72,7 @@ import com.project.pms.dto.ForgotPasswordDTO;
 import java.util.Random;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/pms")
 public class ForgotController {
 
