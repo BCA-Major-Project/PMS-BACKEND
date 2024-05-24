@@ -9,7 +9,7 @@ import com.project.pms.model.Project;
 import com.project.pms.model.User;
 
 public interface AssignedProjectsDao extends JpaRepository<AssignedProjects, Integer> {
-    List<Project> findByUser(User user);
-    List<User> findByProject(Project project);
+    List<AssignedProjects> findByUser(User user);
+    List<AssignedProjects> findByProject(Project project);
 
 }
