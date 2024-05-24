@@ -48,7 +48,7 @@ public class Project {
 
     public static String format_pattern = "yyyy-MM-dd";
 
-    Project(){}
+    public Project(){}
 
     public Project(int pid, User user, String name, String details, String dueDate, String category, List<AssignedProjects> assignedTo, List<Comment> comment) {
 
