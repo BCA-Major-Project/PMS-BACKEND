@@ -28,14 +28,19 @@ public class AssignedProjectsServiceImp implements AssignedProjectsService {
         }
         return assignedProjectsList;
     }
+
+    @Override
+    public List<AssignedProjects> getAllProjects(){
+        return assignedProjectsDao.findAll();
+    }
     
     @Override
-    public List<Project> getAssignedProjects(int userId) {
-        return null;
+    public List<AssignedProjects> getAssignedProjects(User userId) {
+        return assignedProjectsDao.findByUser(userId);
     }
 
     @Override
-    public List<User> getAssignedUsers(int projectId) {
-        return null;
+    public List<AssignedProjects> getAssignedUsers(Project projectId) {
+        return assignedProjectsDao.findByProject(projectId);
     }
 }

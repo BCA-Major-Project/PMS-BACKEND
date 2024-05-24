@@ -9,9 +9,9 @@ import com.project.pms.model.User;
 public interface AssignedProjectsService {
 
     List<AssignedProjects> assignUsersToProject(List<User> users, Project project);
+    List<AssignedProjects> getAllProjects();
+    List<AssignedProjects> getAssignedProjects(User user);
 
-    List<Project> getAssignedProjects(int userId);
-
-    List<User> getAssignedUsers(int projectId);
+    List<AssignedProjects> getAssignedUsers(Project project);
 
 }
