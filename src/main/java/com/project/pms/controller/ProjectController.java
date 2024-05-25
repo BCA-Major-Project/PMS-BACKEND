@@ -1,7 +1,6 @@
 package com.project.pms.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,9 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.project.pms.dto.ProjectUsersDTO;
-import com.project.pms.model.AssignedProjects;
 import com.project.pms.model.Project;
-import com.project.pms.model.ProjectData;
 import com.project.pms.model.User;
 import com.project.pms.services.AssignedProjectsService;
 import com.project.pms.services.ProjectService;
